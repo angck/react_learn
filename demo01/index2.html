@@ -1,0 +1,82 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/jquery.min.js"></script>
+    <script src="../build/remarkable.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/babel">
+
+        (function() {
+            var Comment = React.createClass({
+                render: function() {
+                    return (
+                        <div className="comment">
+                            <h2 className="commentAuthor">{this.props.author}</h2>
+                            {this.props.children}
+                        </div>
+                    )
+                }
+            });
+
+            var CommentList = React.createClass({
+                render: function() {
+                    return (
+                        <div className="commentList">
+                            <Comment author="Pete Hunt">this is one comment</Comment>
+                            <Comment author="Jordan wale">this is *another* comment</Comment>
+                        </div>
+                    )
+                }
+            })
+
+            ReactDOM.render(
+                <CommentList />,
+                document.getElementById('content')
+            );
+        })()
+
+
+        // (function() {
+        //     var Comment = React.createClass({
+        //         rawMarkup: function() {
+        //             var md = new Remarkable();
+        //             var rawMarkup = md.render(this.props.children.toString());
+        //             return {__html: rawMarkup}
+        //         },
+        //         render: function() {
+        //             return (
+        //                 <div className="comment">
+        //                     <h2 className="commentAuthor">{this.props.author}</h2>
+        //                     <div dangerouslySetInnerHTML={this.rawMarkup()}></div>
+        //                 </div>
+        //             )
+        //         }
+        //     });
+        //
+        //     var CommentList = React.createClass({
+        //         render: function() {
+        //             return (
+        //                 <div className="commentList">
+        //                     <Comment author="Pete Hunt">this is one comment</Comment>
+        //                     <Comment author="Jordan wale">this is *another* comment</Comment>
+        //                 </div>
+        //             )
+        //         }
+        //     })
+        //
+        //     ReactDOM.render(
+        //         <CommentList />,
+        //         document.getElementById('content')
+        //     );
+        // })()
+    </script>
+  </body>
+</html>
